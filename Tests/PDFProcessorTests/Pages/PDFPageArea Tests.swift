@@ -7,6 +7,7 @@
 #if canImport(PDFKit)
 
 @testable import PDFProcessor
+import struct Foundation.CGRect
 import Testing
 import TestingExtensions
 

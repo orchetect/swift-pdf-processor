@@ -15,8 +15,8 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/orchetect/swift-extensions", from: "2.0.0"),
-        .package(url: "https://github.com/orchetect/swift-testing-extensions.git", from: "0.2.4")
+        .package(url: "https://github.com/orchetect/swift-extensions", from: "2.1.1"),
+        .package(url: "https://github.com/orchetect/swift-testing-extensions.git", from: "0.3.0")
     ],
     targets: [
         .target(
