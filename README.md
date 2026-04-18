@@ -1,6 +1,6 @@
 # swift-pdf-processor
 
-[![Platforms - macOS 11+ | iOS 14+ | visionOS 1+](https://img.shields.io/badge/platforms-macOS%2011+%20|%20iOS%2014+%20|%20visionOS%201+-lightgrey.svg?style=flat)](https://developer.apple.com/swift) ![Swift 6.0](https://img.shields.io/badge/Swift-6.0-orange.svg?style=flat) [![Xcode 16](https://img.shields.io/badge/Xcode-16-blue.svg?style=flat)](https://developer.apple.com/swift) [![License: MIT](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://github.com/orchetect/swift-pdf-processor/blob/main/LICENSE)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Forchetect%2Fswift-pdf-processor%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/orchetect/swift-pdf-processor) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Forchetect%2Fswift-pdf-processor%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/orchetect/swift-pdf-processor) [![License: MIT](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://github.com/orchetect/swift-pdf-processor/blob/main/LICENSE)
 
 Batch PDF utilities with simple API for Swift. Declarative API for:
 
@@ -132,6 +132,12 @@ Please do not email maintainers for technical support. Several options are avail
 ## Contributions
 
 Contributions are welcome. Posting in [Discussions](https://github.com/orchetect/swift-pdf-processor/discussions) first prior to new submitting PRs for features or modifications is encouraged.
+
+## Code Quality & AI Contribution Policy
+
+In an effort to maintain a consistent level of code quality and safety, this repository was built by hand and is maintained without the use of AI code generation.
+
+AI-assisted contributions are welcome, but must remain modest in scope, maintain the same degree of quality and care, and be thoroughly vetted before acceptance.
 
 ## Legacy
 
