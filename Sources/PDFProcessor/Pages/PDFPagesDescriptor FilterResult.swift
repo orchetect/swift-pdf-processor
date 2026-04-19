@@ -1,7 +1,7 @@
 //
 //  PDFPagesDescriptor FilterResult.swift
 //  swift-pdf-processor • https://github.com/orchetect/swift-pdf-processor
-//  © 2023-2024 Steffan Andrews • Licensed under MIT License
+//  © 2026 Steffan Andrews • Licensed under MIT License
 //
 
 #if canImport(PDFKit)

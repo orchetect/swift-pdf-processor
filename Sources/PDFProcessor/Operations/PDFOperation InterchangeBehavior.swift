@@ -1,7 +1,7 @@
 //
 //  PDFOperation InterchangeBehavior.swift
 //  swift-pdf-processor • https://github.com/orchetect/swift-pdf-processor
-//  © 2023-2024 Steffan Andrews • Licensed under MIT License
+//  © 2026 Steffan Andrews • Licensed under MIT License
 //
 
 #if canImport(PDFKit)
@@ -26,9 +26,9 @@ extension PDFOperation.InterchangeBehavior {
     public var verboseDescription: String {
         switch self {
         case .copy:
-            return "copying"
+            "copying"
         case .move:
-            return "moving"
+            "moving"
         }
     }
 }

@@ -1,7 +1,7 @@
 //
 //  PDFProcessorError.swift
 //  swift-pdf-processor • https://github.com/orchetect/swift-pdf-processor
-//  © 2023-2024 Steffan Andrews • Licensed under MIT License
+//  © 2026 Steffan Andrews • Licensed under MIT License
 //
 
 import Foundation
@@ -13,10 +13,10 @@ public enum PDFProcessorError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case let .validationError(error):
-            return "Validation error: \(error)"
-            
+            "Validation error: \(error)"
+
         case let .runtimeError(error):
-            return error
+            error
         }
     }
 }

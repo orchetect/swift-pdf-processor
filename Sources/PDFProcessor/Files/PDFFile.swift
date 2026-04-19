@@ -1,7 +1,7 @@
 //
 //  PDFFile.swift
 //  swift-pdf-processor • https://github.com/orchetect/swift-pdf-processor
-//  © 2023-2024 Steffan Andrews • Licensed under MIT License
+//  © 2026 Steffan Andrews • Licensed under MIT License
 //
 
 #if canImport(PDFKit)
@@ -14,7 +14,7 @@ class PDFFile {
     var doc: PDFDocument
     var writeOptions: [PDFDocumentWriteOption: Any]
     private var customExportFilename: String?
-    
+
     init(
         doc: PDFDocument,
         customExportFilename: String? = nil,
@@ -24,11 +24,11 @@ class PDFFile {
         self.customExportFilename = customExportFilename
         self.writeOptions = writeOptions
     }
-    
+
     /// Initialize with a new empty `PDFDocument`.
     init() {
         doc = PDFDocument()
-        self.customExportFilename = nil
+        customExportFilename = nil
         writeOptions = [:]
     }
 }
@@ -69,18 +69,18 @@ extension PDFFile {
             ?? "File"
         return withExtension ? base + ".pdf" : base
     }
-    
+
     func set(filenameForExportWithoutExtension filename: String?) {
         customExportFilename = filename
     }
-    
+
     /// Return the consolidated filename for filename text matching logic, without file extension.
     var filenameForMatching: String {
         customExportFilename
             ?? doc.filenameWithoutExtension
             ?? ""
     }
-    
+
     /// Returns `true` if a custom file name was set.
     var hasCustomExportFilename: Bool {
         customExportFilename != nil

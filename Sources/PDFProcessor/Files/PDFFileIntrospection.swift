@@ -1,7 +1,7 @@
 //
 //  PDFFileIntrospection.swift
 //  swift-pdf-processor • https://github.com/orchetect/swift-pdf-processor
-//  © 2023-2024 Steffan Andrews • Licensed under MIT License
+//  © 2026 Steffan Andrews • Licensed under MIT License
 //
 
 #if canImport(PDFKit)
@@ -12,10 +12,10 @@ import PDFKit
 /// Provides a closure for custom introspection logic on a `PDFDocument` instance.
 public struct PDFFileIntrospection {
     let id: UUID = .init()
-    
+
     public var description: String
     public var closure: @Sendable (_ pdf: PDFDocument) -> Bool
-    
+
     public init(
         description: String,
         closure: @escaping @Sendable (_ pdf: PDFDocument) -> Bool

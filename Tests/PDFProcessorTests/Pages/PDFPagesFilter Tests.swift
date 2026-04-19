@@ -1,7 +1,7 @@
 //
 //  PDFPagesFilter Tests.swift
 //  swift-pdf-processor • https://github.com/orchetect/swift-pdf-processor
-//  © 2023-2024 Steffan Andrews • Licensed under MIT License
+//  © 2026 Steffan Andrews • Licensed under MIT License
 //
 
 #if canImport(PDFKit)
@@ -10,17 +10,19 @@
 import Testing
 import TestingExtensions
 
-@Suite struct PDFPagesFilterTests {
-    @Test func all() throws {
+@Suite
+struct PDFPagesFilterTests {
+    @Test
+    func all() {
         let filter: PDFPagesFilter = .all
-        
+
         do {
             let filtered = filter.filtering([])
             #expect(filtered.included == [])
             #expect(filtered.excluded == [])
             #expect(filtered.isInclusive)
         }
-        
+
         do {
             let filtered = filter.filtering([1, 3, 4, 5])
             #expect(filtered.included == [1, 3, 4, 5])
@@ -28,17 +30,18 @@ import TestingExtensions
             #expect(filtered.isInclusive)
         }
     }
-    
-    @Test func include_OddNumbers() throws {
+
+    @Test
+    func include_OddNumbers() {
         let filter: PDFPagesFilter = .include([.oddNumbers])
-        
+
         do {
             let filtered = filter.filtering([])
             #expect(filtered.included == [])
             #expect(filtered.excluded == [])
             #expect(!filtered.isInclusive)
         }
-        
+
         do {
             let filtered = filter.filtering([1, 3, 4, 5])
             #expect(filtered.included == [1, 4])
@@ -46,17 +49,18 @@ import TestingExtensions
             #expect(filtered.isInclusive)
         }
     }
-    
-    @Test func include_EvenNumbers() throws {
+
+    @Test
+    func include_EvenNumbers() {
         let filter: PDFPagesFilter = .include([.evenNumbers])
-        
+
         do {
             let filtered = filter.filtering([])
             #expect(filtered.included == [])
             #expect(filtered.excluded == [])
             #expect(!filtered.isInclusive)
         }
-        
+
         do {
             let filtered = filter.filtering([1, 3, 4, 5])
             #expect(filtered.included == [3, 5])
@@ -64,20 +68,21 @@ import TestingExtensions
             #expect(filtered.isInclusive)
         }
     }
-    
-    @Test func include_Multiple_isInclusive() throws {
+
+    @Test
+    func include_Multiple_isInclusive() {
         let filter: PDFPagesFilter = .include([
             .pages(indexes: [0]),
             .range(indexes: 2 ... 3)
         ])
-        
+
         do {
             let filtered = filter.filtering([])
             #expect(filtered.included == [])
             #expect(filtered.excluded == [])
             #expect(!filtered.isInclusive)
         }
-        
+
         do {
             let filtered = filter.filtering([1, 3, 4, 5, 6])
             #expect(filtered.included == [1, 4, 5])
@@ -85,20 +90,21 @@ import TestingExtensions
             #expect(filtered.isInclusive)
         }
     }
-    
-    @Test func include_Multiple_isNotInclusive_FirstNotInclusive() throws {
+
+    @Test
+    func include_Multiple_isNotInclusive_FirstNotInclusive() {
         let filter: PDFPagesFilter = .include([
             .pages(indexes: [4]),
             .range(indexes: 2 ... 3)
         ])
-        
+
         do {
             let filtered = filter.filtering([])
             #expect(filtered.included == [])
             #expect(filtered.excluded == [])
             #expect(!filtered.isInclusive)
         }
-        
+
         do {
             let filtered = filter.filtering([1, 3, 4, 5])
             #expect(filtered.included == [4, 5])
@@ -106,20 +112,21 @@ import TestingExtensions
             #expect(!filtered.isInclusive)
         }
     }
-    
-    @Test func include_Multiple_isNotInclusive_LastNotInclusive() throws {
+
+    @Test
+    func include_Multiple_isNotInclusive_LastNotInclusive() {
         let filter: PDFPagesFilter = .include([
             .pages(indexes: [0]),
             .range(indexes: 2 ... 3)
         ])
-        
+
         do {
             let filtered = filter.filtering([])
             #expect(filtered.included == [])
             #expect(filtered.excluded == [])
             #expect(!filtered.isInclusive)
         }
-        
+
         do {
             let filtered = filter.filtering([1, 3, 4])
             #expect(filtered.included == [1, 4])
@@ -127,17 +134,18 @@ import TestingExtensions
             #expect(!filtered.isInclusive)
         }
     }
-    
-    @Test func exclude_OddNumbers() throws {
+
+    @Test
+    func exclude_OddNumbers() {
         let filter: PDFPagesFilter = .exclude([.oddNumbers])
-        
+
         do {
             let filtered = filter.filtering([])
             #expect(filtered.included == [])
             #expect(filtered.excluded == [])
             #expect(!filtered.isInclusive)
         }
-        
+
         do {
             let filtered = filter.filtering([1, 3, 4, 5])
             #expect(filtered.included == [3, 5])
@@ -145,17 +153,18 @@ import TestingExtensions
             #expect(filtered.isInclusive)
         }
     }
-    
-    @Test func exclude_EvenNumbers() throws {
+
+    @Test
+    func exclude_EvenNumbers() {
         let filter: PDFPagesFilter = .exclude([.evenNumbers])
-        
+
         do {
             let filtered = filter.filtering([])
             #expect(filtered.included == [])
             #expect(filtered.excluded == [])
             #expect(!filtered.isInclusive)
         }
-        
+
         do {
             let filtered = filter.filtering([1, 3, 4, 5])
             #expect(filtered.included == [1, 4])
@@ -163,20 +172,21 @@ import TestingExtensions
             #expect(filtered.isInclusive)
         }
     }
-    
-    @Test func exclude_Multiple_isInclusive() throws {
+
+    @Test
+    func exclude_Multiple_isInclusive() {
         let filter: PDFPagesFilter = .exclude([
             .pages(indexes: [0]),
             .range(indexes: 2 ... 3)
         ])
-        
+
         do {
             let filtered = filter.filtering([])
             #expect(filtered.included == [])
             #expect(filtered.excluded == [])
             #expect(!filtered.isInclusive)
         }
-        
+
         do {
             let filtered = filter.filtering([1, 3, 4, 5, 6])
             #expect(filtered.included == [3, 6])

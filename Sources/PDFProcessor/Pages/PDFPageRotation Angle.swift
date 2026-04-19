@@ -1,7 +1,7 @@
 //
 //  PDFPageRotation Angle.swift
 //  swift-pdf-processor • https://github.com/orchetect/swift-pdf-processor
-//  © 2023-2024 Steffan Andrews • Licensed under MIT License
+//  © 2026 Steffan Andrews • Licensed under MIT License
 //
 
 #if canImport(PDFKit)
@@ -15,7 +15,7 @@ extension PDFPageRotation {
         case _90degrees = 90
         case _180degrees = 180
         case _270degrees = 270
-        
+
         public init?(degrees: Int) {
             if degrees < 0 {
                 self.init(rawValue: 360 + (degrees % 360))
@@ -52,7 +52,7 @@ extension PDFPageRotation.Angle {
     public static func + (lhs: Self, rhs: Self) -> Self {
         Self(degrees: lhs.degrees + rhs.degrees) ?? ._0degrees
     }
-    
+
     public static func - (lhs: Self, rhs: Self) -> Self {
         Self(degrees: lhs.degrees - rhs.degrees) ?? ._0degrees
     }

@@ -1,7 +1,7 @@
 //
 //  PDFTextPageBreak.swift
 //  swift-pdf-processor • https://github.com/orchetect/swift-pdf-processor
-//  © 2023-2024 Steffan Andrews • Licensed under MIT License
+//  © 2026 Steffan Andrews • Licensed under MIT License
 //
 
 #if canImport(PDFKit)
@@ -25,11 +25,11 @@ extension PDFTextPageBreak {
     public var verboseDescription: String {
         switch self {
         case .none:
-            return "none"
+            "none"
         case .newLine:
-            return "new-line"
+            "new-line"
         case .doubleNewLine:
-            return "double new-line"
+            "double new-line"
         }
     }
 }

@@ -1,17 +1,17 @@
 //
 //  Utils.swift
 //  swift-pdf-processor • https://github.com/orchetect/swift-pdf-processor
-//  © 2023-2024 Steffan Andrews • Licensed under MIT License
+//  © 2026 Steffan Andrews • Licensed under MIT License
 //
 
-import Foundation
 internal import SwiftExtensions
+import Foundation
 
 extension RangeExpression where Bound: Strideable {
     @_disfavoredOverload
     func isContainedWithin(values: [Bound]) -> Bool {
         let bounds = getAbsoluteBounds()
-        
+
         if let min = bounds.min, let max = bounds.max { // X...X, X..<X
             let lowerInclusive = values.contains(where: { $0 <= min })
             let upperInclusive = values.contains(where: { $0 >= max })
@@ -33,9 +33,10 @@ extension URL {
     @available(watchOS, unavailable)
     static var desktopDirectoryBackCompat: URL {
         if #available(macOS 13, iOS 16, tvOS 16, watchOS 9, *) {
-            return .desktopDirectory
+            .desktopDirectory
         } else {
-            return FileManager.default.homeDirectoryForCurrentUser
+            FileManager.default
+                .homeDirectoryForCurrentUser
                 .appendingPathComponent("Desktop")
         }
     }
@@ -60,12 +61,12 @@ extension CGRect {
             width: height,
             height: width
         )
-        
+
         if !isAbsolute {
             rect.origin.x += area.origin.y
             rect.origin.y -= area.origin.x
         }
-        
+
         return rect
     }
 }

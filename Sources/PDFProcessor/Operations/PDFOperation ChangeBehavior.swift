@@ -1,7 +1,7 @@
 //
 //  PDFOperation ChangeBehavior.swift
 //  swift-pdf-processor • https://github.com/orchetect/swift-pdf-processor
-//  © 2023-2024 Steffan Andrews • Licensed under MIT License
+//  © 2026 Steffan Andrews • Licensed under MIT License
 //
 
 #if canImport(PDFKit)
@@ -13,7 +13,7 @@ extension PDFOperation {
     public enum ChangeBehavior {
         /// Set absolute page rotation value, replacing existing rotation if any.
         case absolute
-        
+
         /// Relative to current page rotation, if any.
         /// If current page rotation is 0 degrees, this is identical to ``absolute``.
         case relative
@@ -30,9 +30,9 @@ extension PDFOperation.ChangeBehavior {
     public var verboseDescription: String {
         switch self {
         case .absolute:
-            return "absolute"
+            "absolute"
         case .relative:
-            return "relative"
+            "relative"
         }
     }
 }

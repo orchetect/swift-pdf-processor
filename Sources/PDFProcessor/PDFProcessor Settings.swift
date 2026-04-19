@@ -1,13 +1,13 @@
 //
 //  PDFProcessor Settings.swift
 //  swift-pdf-processor • https://github.com/orchetect/swift-pdf-processor
-//  © 2023-2024 Steffan Andrews • Licensed under MIT License
+//  © 2026 Steffan Andrews • Licensed under MIT License
 //
 
 #if canImport(PDFKit)
 
-import Foundation
 internal import SwiftExtensions
+import Foundation
 
 extension PDFProcessor {
     public struct Settings {
@@ -15,20 +15,20 @@ extension PDFProcessor {
         public var outputDir: URL?
         public var operations: [PDFOperation]
         public var savePDFs: Bool
-        
+
         /// Initialize with defaults for default-able parameters.
         public init(
             sourcePDFs: [URL]
         ) throws {
             self.sourcePDFs = sourcePDFs
-            
+
             outputDir = Defaults.outputDir
             operations = Defaults.operations
             savePDFs = Defaults.savePDFs
-            
+
             try validate()
         }
-        
+
         public init(
             sourcePDFs: [URL],
             outputDir: URL?,
@@ -39,7 +39,7 @@ extension PDFProcessor {
             self.sourcePDFs = sourcePDFs
             self.outputDir = outputDir
             self.savePDFs = savePDFs
-            
+
             try validate()
         }
     }
@@ -63,7 +63,7 @@ extension PDFProcessor.Settings {
     public enum Validation {
         // public static let ... = 1 ... 10
     }
-    
+
     private func validate() throws {
         try sourcePDFs.forEach { url in
             guard url.fileExists, url.isDirectory else {
@@ -72,7 +72,7 @@ extension PDFProcessor.Settings {
                 )
             }
         }
-        
+
         if let outputDir {
             guard outputDir.fileExists else {
                 throw PDFProcessorError.validationError(
@@ -85,7 +85,7 @@ extension PDFProcessor.Settings {
                 )
             }
         }
-        
+
         guard !operations.isEmpty else {
             throw PDFProcessorError.validationError(
                 "No operation(s) are specified."

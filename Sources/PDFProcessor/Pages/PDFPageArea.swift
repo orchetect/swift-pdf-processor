@@ -1,13 +1,13 @@
 //
 //  PDFPageArea.swift
 //  swift-pdf-processor • https://github.com/orchetect/swift-pdf-processor
-//  © 2023-2024 Steffan Andrews • Licensed under MIT License
+//  © 2026 Steffan Andrews • Licensed under MIT License
 //
 
 #if canImport(PDFKit)
 
-import Foundation
 internal import SwiftExtensions
+import Foundation
 
 public enum PDFPageArea {
     /// Literal inset values.
@@ -18,7 +18,7 @@ public enum PDFPageArea {
         bottom: PDFPageInset = .passthrough,
         trailing: PDFPageInset = .passthrough
     )
-    
+
     /// Literal bounds values in points.
     case rect(
         x: Double,
@@ -38,9 +38,9 @@ extension PDFPageArea {
     public var verboseDescription: String {
         switch self {
         case let .insets(top, leading, bottom, trailing):
-            return "insets top: \(top.verboseDescription), leading: \(leading.verboseDescription), bottom: \(bottom.verboseDescription), trailing: \(trailing.verboseDescription)"
+            "insets top: \(top.verboseDescription), leading: \(leading.verboseDescription), bottom: \(bottom.verboseDescription), trailing: \(trailing.verboseDescription)"
         case let .rect(x, y, width, height):
-            return "area x:\(x) y:\(y) w:\(width) h:\(height)"
+            "area x:\(x) y:\(y) w:\(width) h:\(height)"
         }
     }
 }
@@ -58,7 +58,7 @@ extension PDFPageArea {
             trailing: .scale(factor: factor)
         )
     }
-    
+
     #if os(macOS)
     public static func insets(_ insets: NSEdgeInsets) -> Self {
         .insets(
@@ -69,7 +69,7 @@ extension PDFPageArea {
         )
     }
     #endif
-    
+
     public static func rect(_ rect: CGRect) -> Self {
         .rect(
             x: rect.origin.x,
@@ -112,12 +112,12 @@ extension PDFPageArea {
                 trailing: trailing,
                 by: rotation
             )
-            
+
             var x = source.origin.x
             var y = source.origin.y
             var width = source.width
             var height = source.height
-            
+
             switch top {
             case let .points(value):
                 height += value
@@ -127,7 +127,7 @@ extension PDFPageArea {
             case .passthrough:
                 break
             }
-            
+
             switch leading {
             case let .points(value):
                 width += value
@@ -139,7 +139,7 @@ extension PDFPageArea {
             case .passthrough:
                 break
             }
-            
+
             switch bottom {
             case let .points(value):
                 height += value
@@ -151,7 +151,7 @@ extension PDFPageArea {
             case .passthrough:
                 break
             }
-            
+
             switch trailing {
             case let .points(value):
                 width += value
@@ -161,17 +161,17 @@ extension PDFPageArea {
             case .passthrough:
                 break
             }
-            
+
             // TODO: Add additional guards for validation checks to prevent inversions
-            
+
             return CGRect(x: x, y: y, width: width, height: height)
-            
+
         case let .rect(x, y, width, height):
             // associated values define a rect in the current rotation presentation,
             // however PDFKit treats bounds in the page's non-rotated coordinate context.
             // this means we need to "rotate" our coordinates respectively to convert them
             // if the page is rotated.
-            
+
             switch rotation {
             case ._0degrees:
                 var rect = CGRect(x: x, y: y, width: width, height: height)
@@ -180,33 +180,33 @@ extension PDFPageArea {
                 return rect
             case ._90degrees:
                 var rect = CGRect(x: x, y: y, width: width, height: height)
-                
+
                 var source = source.rotate90Degrees(within: source, isAbsolute: true)
                 rect = rect.rotate90Degrees(within: source, isAbsolute: false)
-                
+
                 source = source.rotate90Degrees(within: source, isAbsolute: true)
                 rect = rect.rotate90Degrees(within: source, isAbsolute: false)
-                
+
                 source = source.rotate90Degrees(within: source, isAbsolute: true)
                 rect = rect.rotate90Degrees(within: source, isAbsolute: false)
-                
+
                 return rect
             case ._180degrees:
                 var rect = CGRect(x: x, y: y, width: width, height: height)
-                
+
                 var source = source
                 rect = rect.rotate90Degrees(within: source, isAbsolute: false)
-                
+
                 source = source.rotate90Degrees(within: source, isAbsolute: true)
                 rect = rect.rotate90Degrees(within: source, isAbsolute: false)
-                
+
                 return rect
             case ._270degrees:
                 var rect = CGRect(x: x, y: y, width: width, height: height)
-                
+
                 let source = source.rotate90Degrees(within: source, isAbsolute: true)
                 rect = rect.rotate90Degrees(within: source, isAbsolute: false)
-                
+
                 return rect
             }
         }

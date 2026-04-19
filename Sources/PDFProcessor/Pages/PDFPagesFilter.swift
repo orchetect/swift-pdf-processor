@@ -1,13 +1,13 @@
 //
 //  PDFPagesFilter.swift
 //  swift-pdf-processor • https://github.com/orchetect/swift-pdf-processor
-//  © 2023-2024 Steffan Andrews • Licensed under MIT License
+//  © 2026 Steffan Andrews • Licensed under MIT License
 //
 
 #if canImport(PDFKit)
 
-import Foundation
 internal import SwiftExtensions
+import Foundation
 
 /// Criteria to filter PDF pages.
 public enum PDFPagesFilter {
@@ -27,31 +27,31 @@ extension PDFPagesFilter {
     func filtering(_ inputs: [Int], sort: Bool = true) -> IndexesDiff {
         var included = inputs
         var isInclusive = true
-        
+
         switch self {
         case .all:
             // no logic needed, just keep all input indexes
             isInclusive = true
-            
+
         case let .include(descriptor):
             let diffed = Self.diff(indexes: included, descriptor, include: true)
             included = diffed.indexes
             isInclusive = diffed.allAreInclusive
-            
+
         case let .exclude(descriptor):
             let diffed = Self.diff(indexes: included, descriptor, include: false)
             included = diffed.indexes
             isInclusive = diffed.allAreInclusive
         }
-        
+
         if sort {
             included.sort()
         }
-        
+
         let excluded = inputs.filter {
             !included.contains($0)
         }
-        
+
         return IndexesDiff(
             original: inputs,
             included: included,
@@ -59,7 +59,7 @@ extension PDFPagesFilter {
             isInclusive: isInclusive
         )
     }
-    
+
     private static func diff(
         indexes: [Int],
         _ pagesDescriptors: [PDFPagesDescriptor],
@@ -71,13 +71,13 @@ extension PDFPagesFilter {
                 if result.isInclusive == false { base.isInclusive = false }
                 base.results.formUnion(result.indexes)
             }
-        
+
         let indexes = include
             ? Array(filtered.results)
             : Array(indexes.filter { !filtered.results.contains($0) })
-        
+
         let allAreInclusive = filtered.isInclusive
-        
+
         return (indexes: indexes, allAreInclusive: allAreInclusive)
     }
 }
@@ -87,11 +87,11 @@ extension PDFPagesFilter {
         switch self {
         case .all:
             return "all pages"
-            
+
         case let .include(descriptors):
             let pageSetsStr = descriptors.map(\.verboseDescription).joined(separator: ", ")
             return "pages including \(pageSetsStr)"
-            
+
         case let .exclude(descriptors):
             let pageSetsStr = descriptors.map(\.verboseDescription).joined(separator: ", ")
             return "pages excluding \(pageSetsStr)"

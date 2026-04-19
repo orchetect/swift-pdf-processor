@@ -1,7 +1,7 @@
 //
 //  PDFAnnotationFilter.swift
 //  swift-pdf-processor • https://github.com/orchetect/swift-pdf-processor
-//  © 2023-2024 Steffan Andrews • Licensed under MIT License
+//  © 2026 Steffan Andrews • Licensed under MIT License
 //
 
 #if canImport(PDFKit)
@@ -28,38 +28,38 @@ extension PDFAnnotationFilter {
     ) -> [PDFAnnotation] {
         switch self {
         case .all:
-            return inputs
-            
+            inputs
+
         case .none:
-            return []
-            
+            []
+
         case let .include(types):
-            return inputs.filter {
+            inputs.filter {
                 $0.type(containedIn: types)
             }
-            
+
         case let .exclude(types):
-            return inputs.filter {
+            inputs.filter {
                 !$0.type(containedIn: types)
             }
         }
     }
-    
+
     func contains(
         _ input: PDFAnnotation
     ) -> Bool {
         switch self {
         case .all:
-            return true
-            
+            true
+
         case .none:
-            return false
-            
+            false
+
         case let .include(types):
-            return input.type(containedIn: types)
-            
+            input.type(containedIn: types)
+
         case let .exclude(types):
-            return !input.type(containedIn: types)
+            !input.type(containedIn: types)
         }
     }
 }
@@ -69,14 +69,14 @@ extension PDFAnnotationFilter {
         switch self {
         case .all:
             return "all annotations"
-            
+
         case .none:
             return "no annotations"
-            
+
         case let .include(types):
             let typesStr = types.map(\.rawValue.quoted).joined(separator: ", ")
             return "including \(typesStr) annotations"
-            
+
         case let .exclude(types):
             let typesStr = types.map(\.rawValue.quoted).joined(separator: ", ")
             return "excluding \(typesStr) annotations"

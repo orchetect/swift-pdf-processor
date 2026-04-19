@@ -1,7 +1,7 @@
 //
 //  PDFPageInset.swift
 //  swift-pdf-processor • https://github.com/orchetect/swift-pdf-processor
-//  © 2023-2024 Steffan Andrews • Licensed under MIT License
+//  © 2026 Steffan Andrews • Licensed under MIT License
 //
 
 #if canImport(PDFKit)
@@ -9,11 +9,11 @@
 public enum PDFPageInset {
     /// A literal value in points.
     case points(Double)
-    
+
     /// A scale factor.
     /// `1.0` represents 1:1 scale to original.
     case scale(factor: Double)
-    
+
     /// Preserve the inset as-is, unchanged.
     case passthrough
 }

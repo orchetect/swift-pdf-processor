@@ -1,7 +1,7 @@
 //
 //  PDFOperation PDFTextDestination.swift
 //  swift-pdf-processor • https://github.com/orchetect/swift-pdf-processor
-//  © 2023-2024 Steffan Andrews • Licensed under MIT License
+//  © 2026 Steffan Andrews • Licensed under MIT License
 //
 
 #if canImport(PDFKit)
@@ -14,10 +14,10 @@ public enum PDFTextDestination {
     @available(tvOS, unavailable)
     @available(watchOS, unavailable)
     case pasteboard
-    
+
     /// Save to a file on disk.
     case file(url: URL)
-    
+
     /// Store in memory in the ``PDFProcessor`` instance's ``PDFProcessor/variables`` dictionary,
     /// keyed by the variable name.
     ///
@@ -35,11 +35,11 @@ extension PDFTextDestination {
     public var verboseDescription: String {
         switch self {
         case .pasteboard:
-            return "pasteboard"
+            "pasteboard"
         case let .file(url):
-            return url.absoluteString
+            url.absoluteString
         case let .variable(name):
-            return "variable named \(name.quoted)"
+            "variable named \(name.quoted)"
         }
     }
 }
