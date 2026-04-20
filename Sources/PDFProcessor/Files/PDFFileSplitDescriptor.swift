@@ -11,7 +11,7 @@ import Foundation
 import PDFKit
 
 /// Criteria for splitting a PDF file.
-public enum PDFFileSplitDescriptor {
+public enum PDFFileSplitDescriptor { // TODO: refactor as protocol
     case at(pageIndexes: [Int])
     case every(pageCount: Int)
     case pageIndexesAndFilenames([PDFOperation.PageRangeAndFilename])

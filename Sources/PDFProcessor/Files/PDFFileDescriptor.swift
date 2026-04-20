@@ -10,7 +10,7 @@ import Foundation
 import PDFKit
 
 /// Criteria to match a single PDF file.
-public enum PDFFileDescriptor {
+public enum PDFFileDescriptor { // TODO: refactor as protocol
     /// First file.
     case first
 
@@ -27,7 +27,7 @@ public enum PDFFileDescriptor {
     case filename(_ filenameDescriptor: PDFFilenameDescriptor)
 
     /// File matching against an introspection closure.
-    case introspecting(_ introspection: PDFFileIntrospection)
+    case introspecting(_ introspection: PDFFileIntrospection) // TODO: convert to required protocol method
 }
 
 extension PDFFileDescriptor: Equatable { }

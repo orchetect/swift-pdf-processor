@@ -10,7 +10,7 @@ import Foundation
 import PDFKit
 
 /// Criteria to match an arbitrary number of PDF files.
-public enum PDFFilesDescriptor {
+public enum PDFFilesDescriptor { // TODO: refactor as protocol
     case all
     case first
     case second
@@ -20,7 +20,7 @@ public enum PDFFilesDescriptor {
     case indexRange(_ indexRange: ClosedRange<Int>)
     case filename(_ filenameDescriptor: PDFFilenameDescriptor)
     // case filenames(_ filenameDescriptors: [PDFFilenameDescriptor]) // TODO: add this
-    case introspecting(_ introspection: PDFFileIntrospection)
+    case introspecting(_ introspection: PDFFileIntrospection) // TODO: convert to required protocol method
 }
 
 extension PDFFilesDescriptor: Equatable { }

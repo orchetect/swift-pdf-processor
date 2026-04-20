@@ -8,7 +8,7 @@ internal import SwiftExtensions
 import Foundation
 
 /// Criteria to match a PDF filename (excluding .pdf file extension).
-public enum PDFFilenameDescriptor {
+public enum PDFFilenameDescriptor { // TODO: refactor as protocol
     /// Exact full string match.
     case equals(String)
 
@@ -30,9 +30,9 @@ public enum PDFFilenameDescriptor {
     /// Filename that does not contain the given string.
     case doesNotContain(String)
 
-    // case matches(regex: Regex)
+    // case matches(regex: Regex) // TODO: implement
 
-    // case doesNotMatch(regex: Regex)
+    // case doesNotMatch(regex: Regex) // TODO: implement
 }
 
 extension PDFFilenameDescriptor: Equatable { }
@@ -42,6 +42,7 @@ extension PDFFilenameDescriptor: Hashable { }
 extension PDFFilenameDescriptor: Sendable { }
 
 extension PDFFilenameDescriptor {
+    // TODO: make required protocol method of `PDFFilenameDescriptor`
     public func matches(_ source: String) -> Bool {
         switch self {
         case let .equals(string):

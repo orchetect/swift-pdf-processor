@@ -10,7 +10,7 @@ internal import SwiftExtensions
 import Foundation
 
 /// Criteria to filter PDF pages.
-public enum PDFPagesDescriptor {
+public enum PDFPagesDescriptor { // TODO: refactor as protocol
     /// Page number (not index) is explicitly an odd integer.
     case oddNumbers
 

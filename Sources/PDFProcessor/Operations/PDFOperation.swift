@@ -10,7 +10,7 @@ import Foundation
 import PDFKit
 
 /// PDF editing operations.
-public enum PDFOperation {
+public enum PDFOperation { // TODO: refactor as protocol
     // MARK: - File Operations
 
     /// New empty PDF file.
