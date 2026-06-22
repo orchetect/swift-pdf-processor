@@ -1,6 +1,6 @@
 //
 //  PDFKit Extensions.swift
-//  swift-pdf-processor • https://github.com/orchetect/swift-pdf-processor
+//  SwiftPDFProcessor • https://github.com/orchetect/swift-pdf-processor
 //  © 2026 Steffan Andrews • Licensed under MIT License
 //
 
