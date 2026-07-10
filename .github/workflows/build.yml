@@ -25,8 +25,8 @@ on:
     - cron: '10 11 * * *'   # once a day @ 11:10am UTC (4:50am PST)
 
 env:
-  SCHEME: "swift-pdf-processor"
-  WORKSPACEPATH: ".swiftpm/xcode/package.xcworkspace"
+  SCHEME: swift-pdf-processor
+  WORKSPACEPATH: .swiftpm/xcode/package.xcworkspace
 
 jobs:
   macOS:
@@ -77,9 +77,9 @@ jobs:
     name: Tests
     runs-on: macos-latest
     strategy:
+      fail-fast: false
       matrix:
         target: [iOS, tvOS, watchOS, visionOS]
-    continue-on-error: true
     timeout-minutes: 20
     steps:
     - uses: actions/checkout@main
