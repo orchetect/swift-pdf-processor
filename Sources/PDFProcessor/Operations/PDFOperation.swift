@@ -73,7 +73,7 @@ public enum PDFOperation { // TODO: refactor as protocol
         toPageIndex: Int? = nil
     )
 
-    /// Copy page(s) within the same PDF file or from one file to another.
+    /// Move page(s) within the same PDF file or from one file to another.
     case movePages(
         fromFile: PDFFileDescriptor,
         fromPages: PDFPagesFilter,
@@ -184,7 +184,7 @@ extension PDFOperation {
         .copyPages(fromFile: file, fromPages: fromPages, toFile: file, toPageIndex: toPageIndex)
     }
 
-    /// Copy page(s) within the same PDF file or from one file to another.
+    /// Move page(s) within the same PDF file or from one file to another.
     public static func movePages(
         file: PDFFileDescriptor,
         from fromPages: PDFPagesFilter,
