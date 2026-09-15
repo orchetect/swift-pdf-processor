@@ -66,7 +66,7 @@ extension PDFProcessor.Settings {
 
     private func validate() throws {
         try sourcePDFs.forEach { url in
-            guard url.fileExists, url.isDirectory else {
+            guard url.fileExists, !url.isDirectory else {
                 throw PDFProcessorError.validationError(
                     "File does not exist at \(url.path.quoted)."
                 )
