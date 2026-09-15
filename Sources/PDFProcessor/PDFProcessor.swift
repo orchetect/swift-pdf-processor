@@ -109,8 +109,6 @@ extension PDFProcessor {
     /// - Parameters:
     ///   - outputDir: Output directory. Must be a folder that exists on disk.
     ///     If `nil`, PDF file(s) are saved to the same directory they exist.
-    ///   - baseFilenames: Array of filenames (excluding .pdf file extension) to use.
-    ///     If `nil`, a smart default is used.
     public func savePDFs(
         outputDir: URL?
     ) throws {
